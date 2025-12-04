@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGACY HACK - Вход</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(20, 20, 35, 0.95);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid #2a2a4a;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: #00ff9d;
+            font-size: 32px;
+            text-shadow: 0 0 15px #00ff9d;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .login-header .subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            color: #aaa;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .form-input {
+            padding: 15px;
+            background: rgba(40, 40, 60, 0.8);
+            border: 1px solid #4a4a7a;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #00ff9d;
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+        }
+
+        .login-btn {
+            padding: 15px;
+            background: linear-gradient(45deg, #00ff9d, #00b8ff);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 157, 0.4);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3a6a;
+        }
+
+        .credits {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .version {
+            color: #00ff9d;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+        .error-message {
+            background: rgba(255, 50, 50, 0.1);
+            border: 1px solid #ff3232;
+            color: #ff6b6b;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>LEGACY HACK</h1>
+            <div class="subtitle">Вход в панель управления обновлениями</div>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label class="form-label">Логин</label>
+                <input type="text" class="form-input" id="username" 
+                       placeholder="Введите ваш логин" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <input type="password" class="form-input" id="password" 
+                       placeholder="Введите пароль" required>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                Неверный логин или пароль!
+            </div>
+
+            <button type="submit" class="login-btn">
+                🔐 ВОЙТИ
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <div class="credits">Created by Roman & Kirill</div>
+            <div class="version">Version 1.0.0.1</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Простая проверка (замените на реальную)
+            if (username === 'admin' && password === 'admin123') {
+                // Перенаправление на админ-панель
+                window.location.href = 'admin.html';
+            } else {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Неверный логин или пароль!';
+            }
+        });
+    </script>
+</body>
+</html>
